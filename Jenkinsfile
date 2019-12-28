@@ -34,7 +34,7 @@ pipeline {
 
                     app.inside {
 
-                        sh 'echo $(curl localhost:8082)'
+                        sh 'echo $(curl localhost:8080)'
 
                     }
 
@@ -102,7 +102,7 @@ pipeline {
 
                         }
 
-                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"docker run --restart always --name train-schedule -p 8082:8082 -d nmarza/train-schedule:${env.BUILD_NUMBER}\""
+                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"docker run --restart always --name train-schedule -p 8080:8080 -d nmarza/train-schedule:${env.BUILD_NUMBER}\""
 
                     }
 
